@@ -1,0 +1,76 @@
+openapi: 3.0.4
+info:
+  title: Authorization service
+  description: Proxy  API
+  version: 0.1.9
+
+servers:
+  - url: http://localhost:8083/auth/
+    description: Local development server
+  - url: https://www.ssoexample.com/auth/
+    description: Production server
+
+paths:
+  /login:
+    post:
+      summary: Login user
+      description: Authenticates user by login and password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+              required:
+                - email
+                - password
+      responses:
+        "200":
+          description: Successful authentication
+        "400":
+          description: Invalid data
+  /logout:
+    post:
+      summary: Logout user
+      description: Logs out user by invalidating refresh token and clearing authentication cookies.
+      responses:
+        "200":
+          description: Successful logout
+        "401":
+          description: Unauthorized - invalid or missing authentication
+
+  /refresh-token:
+    get:
+      summary: Refresh access token
+      description: Refresh access token using a refresh token
+      responses:
+        "200":
+          description: Tokens refreshed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: New access token
+                  refresh_token:
+                    type: string
+                    description: New refresh token
+        "401":
+          description: Unauthorized — invalid or expired refresh token
+      security: [ ]
+      parameters:
+        - in: cookie
+          name: refresh_token
+          required: true
+          schema:
+            type: string
+          description: Refresh token stored in HttpOnly cookie

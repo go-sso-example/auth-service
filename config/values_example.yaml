@@ -1,0 +1,58 @@
+# PostgreSQL database
+database:
+  name: ""
+  user: ""
+  password: ""
+  host: ""
+  port: ""
+  ssl_mode: ""
+  max_cons:
+  min_cons:
+  max_conn_lifetime: ""
+
+# JWT Token
+jwt:
+  token_secret: ""
+  access_token_ttl: ""
+  refresh_token_ttl: ""
+
+# Redis
+redis:
+  addr: ""
+  password: ""
+  bd: 0
+  key: ""
+
+# Worker
+refresh_resources_ttl: ""
+refresh_resources_interval: ""
+
+# Swagger UI
+swagger:
+  url: ""
+  auth_spec_url: ""
+  auth_spec_path: ""
+  auth_url: ""
+  resource_spec_url: ""
+  resource_spec_path: ""
+  resource_url: ""
+
+# HTTP server
+server:
+  http:
+    port: ""
+    proxy_prefix: ""
+    auth_prefix: ""
+    resource_prefix: ""
+
+# GRPC client
+grpc_client:
+  max_retry:
+  timeout_per_retry: ""
+
+user_service:
+  host: ""
+
+# Worker
+worker_mode:
+  refresh_routes: ""
