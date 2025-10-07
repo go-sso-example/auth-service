@@ -3,6 +3,6 @@
 *.iml
 
 # Config local
-/config/config.yaml
+/config/values.yaml
 
 .DS_Store

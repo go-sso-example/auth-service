@@ -30,7 +30,7 @@ services:
       - DB_NAME=auth_service_db
     volumes:
       - ./logs:/app/logs
-      - ./config/config.yaml:/config/config.yaml
+      - ./config/values.yaml:/config/values.yaml
     depends_on:
       db:
         condition: service_healthy

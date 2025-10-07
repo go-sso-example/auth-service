@@ -80,6 +80,17 @@ auth-service/
 └── migrations.sh          # Script to run migrations
 ```
 
+### Database Schema
+
+Main entities used by Auth Service:
+
+- **Users**: system users managed via User Service.
+- **Services**: registered backend services for proxying.
+- **Resources**: endpoints/resources associated with services.
+- **Roles**: user roles and permissions for access control.
+
+Migrations are located in `/migrations` and handled automatically on startup.
+
 ### Backend Services
 - **gRPC Server** with HTTP/REST gateway
 - **PostgreSQL** database with connection pooling
@@ -182,17 +193,6 @@ user_service:
 worker_mode:
   refresh_routes: ""             # Enable/disable automatic route refresh
 ```
-
-## Database Schema
-
-Main entities used by Auth Service:
-
-- **Users**: system users managed via User Service.
-- **Services**: registered backend services for proxying.
-- **Resources**: endpoints/resources associated with services.
-- **Roles**: user roles and permissions for access control.
-
-Migrations are located in `/migrations` and handled automatically on startup.
 
 ## Getting Started
 
